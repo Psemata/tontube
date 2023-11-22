@@ -63,3 +63,9 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgments
 - This project was inspired by the need for a homemade YouTube experience.
 - Special thanks to the Spring and Vue.js communities for their excellent frameworks.
+
+## Members
+* Bruno Costa, [@Psemata](https://github.com/Psemata).
+* Diogo Lopes Da Silva, [@Ultrasic](https://github.com/Ultrasic).
+* Valentino Izzo, [@Tino3210](https://github.com/Tino3210).
+* Loïc Frossard
