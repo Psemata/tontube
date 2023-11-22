@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-inter font-extrabold;
+  }
+  ,
+  p {
+    @apply font-inter font-normal;
+  }
+  input {
+    @apply bg-tertiary pl-3 block w-full border-none h-11 font-semibold focus:border-accent rounded-xl shadow-lg;
+  }
+  ,
+  label {
+    @apply text-text text-xl font-inter font-semibold;
+  }
+  ,
+  textarea {
+    @apply bg-tertiary pl-3 block w-full border-none h-11 rounded-xl shadow-lg;
+  }
+}
+
+@layer utilities {
+  .btn-accent {
+    @apply mt-3 text-xl font-inter font-medium text-textw bg-accent w-full py-3 rounded-xl hover:bg-accent_hover;
+  }
+}

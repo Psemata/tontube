@@ -1,0 +1,52 @@
+version: '3'
+services:
+  mysql-db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: tontube
+      MYSQL_USER: tontubeuser
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: toor
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend  
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on: 
+      - mysql-db
+    ports:
+      - 8080:8080
+    networks:
+      - backend 
+      - frontend
+        
+  spring-app:
+    container_name: spring-app
+    build: .
+    restart: on-failure
+    ports:
+      - "8088:8080"
+    depends_on: 
+      - mysql-db  
+    environment:
+      SPRING_DATASOURCE_USERNAME: tontubeuser
+      SPRING_DATASOURCE_PASSWORD: secret
+
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db/tontube?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT
+    command: mvn clean spring-boot:run
+    networks:
+      - backend
+      - frontend
+
+volumes:
+  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
+  frontend:   

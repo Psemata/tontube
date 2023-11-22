@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>	
+		<h1>Hello</h1>
+		<form method="POST" th:action="@{/api/video/update}" enctype="multipart/form-data">
+		    <table>
+		    	<tr>
+		            <td>Id</td>
+		            <td><input type="text" name="id" /></td>
+		        </tr>
+		        <tr>
+		            <td>Name</td>
+		            <td><input type="text" name="title" /></td>
+		        </tr>
+		        <tr>
+		            <td>Description</td>
+		            <td><input type="text" name="description" /></td>
+		        </tr>
+		        <tr>
+		            <td>Tags</td>
+		            <td><input type="text" name="tags" value="comment1"/></td>
+		            <td><input type="text" name="tags" value="comment2"/></td>
+		            <td><input type="text" name="tags" value="comment3"/></td>
+		            <td><input type="text" name="tags" value="comment4"/></td>
+		            <td><input type="text" name="tags" value="comment5"/></td>
+		        </tr>
+		        <tr>
+		            <td><input type="submit" value="Submit" /></td>
+		        </tr>
+		    </table>
+		</form>
+	</body>
+</html>

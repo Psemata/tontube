@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.4</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>ch.hearc.spring</groupId>
+	<artifactId>TonTube</artifactId>
+	<version>v1.0</version>
+	<name>TonTube</name>
+	<description>YouTube mais en mieux</description>
+	<properties>
+        <project.youtube.version>v3-rev182-1.22.0</project.youtube.version>
+        <project.youtube.analytics.version>v1-rev63-1.22.0</project.youtube.analytics.version>
+        <project.youtube.reporting.version>v1-rev10-1.22.0</project.youtube.reporting.version>
+        <project.http.version>1.20.0</project.http.version>
+        <project.oauth.version>1.20.0</project.oauth.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sonar.organization>tontube</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-youtube</artifactId>
+            <version>${project.youtube.version}</version>
+        </dependency>
+
+        <!-- Required for any code that makes calls to the YouTube Analytics API -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-youtubeAnalytics</artifactId>
+            <version>${project.youtube.analytics.version}</version>
+        </dependency>
+
+        <!-- Required for any code that makes calls to the YouTube Reporting API -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-youtubereporting</artifactId>
+            <version>${project.youtube.reporting.version}</version>
+        </dependency>
+
+        <!-- This dependency is only used for the Topics API sample, which requires the Jackson JSON parser -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${project.http.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>${project.oauth.version}</version>
+            <exclusions>
+			    <exclusion>
+			    	<groupId>org.mortbay.jetty</groupId>
+			    	<artifactId>servlet-api</artifactId>
+			    </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
+            <version>1.0</version>
+        </dependency>
+        
+        <dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.28</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

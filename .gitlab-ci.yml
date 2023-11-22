@@ -1,0 +1,71 @@
+image: ubuntu
+
+stages:
+  - build
+  - whereami
+  - test
+  - sonarqube
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Build process"
+    - docker-compose up --build -d
+    - docker-compose up -d
+    - echo "Build ok"
+  only:
+    - main
+  tags:
+    - tontube
+
+whereami:
+  stage: whereami
+  script:
+    - echo "whereami process"
+    - ls
+    - echo "whereami ok"
+  only:
+    - main
+  tags:
+    - tontube
+
+unittest:
+  stage: test
+  script:
+    - echo "start test"
+    - echo "test ok"
+  only:
+    - main
+  tags:
+    - tontube
+
+sonarqube:
+  image: maven:latest
+  stage: sonarqube
+  script:
+    - echo "start sonarqube stage"
+    - cd TonTubeWS/tontube
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ch.hearc.spring:TonTube
+    - echo "sonarqube ok"
+    - cd ../..
+  only:
+    - main
+  tags:
+    - tontube
+
+deploy_ssh:
+  stage: deploy
+  before_script:
+    - echo "do some stuff before"
+  script:
+    - echo "deploy apps"
+    - echo "deploy ok"
+  only:
+    - main
+  tags:
+    - tontube
+  when: manual
+
+after_script:
+  - echo "End CI/CD"

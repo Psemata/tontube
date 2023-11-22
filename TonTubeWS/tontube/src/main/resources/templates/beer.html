@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Beers</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Stock</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Fabricant</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="beer : ${beers}">
+                    <td th:text="${beer.nom}"></td>
+                    <td th:text="${beer.fabricant}"></td>
+                    <td th:text="${#numbers.formatDecimal(beer.prix, 1, 2) + ' CHF'}"></td>
+                    <td th:text="${beer.stock}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/newBeer" role="button" aria-pressed="true">Nouvelle bière</a>
+    </body>
+</html>
